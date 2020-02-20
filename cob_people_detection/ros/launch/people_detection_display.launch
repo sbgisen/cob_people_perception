@@ -3,7 +3,7 @@
 <launch>
 
   <!-- display node for the detections -->
-  <node pkg="cob_people_detection" type="people_detection_display_node" name="people_detection_display" output="screen">
+  <node pkg="cob_people_detection" type="people_detection_display_node" name="people_detection_display" output="screen" launch-prefix="nice -n 20">
     <rosparam command="load" file="$(find cob_people_detection)/ros/launch/people_detection_display_params.yaml"/>
     <remap from="~face_position_array" to="detection_tracker/face_position_array"/>
     <remap from="~face_detections" to="face_detector/face_positions"/>
@@ -11,7 +11,7 @@
   </node>
 
   <!-- Image viewer display -->
-  <node name="people_detection_viewer" pkg="image_view" type="image_view" respawn="false" output="screen">
+  <node name="people_detection_viewer" pkg="image_view" type="image_view" respawn="false" output="screen" launch-prefix="nice -n 20">
     <remap from="image" to="people_detection_display/face_position_image"/>
     <param name="autosize" value="true"/>
   </node>

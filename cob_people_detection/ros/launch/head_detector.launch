@@ -3,7 +3,7 @@
 <launch>
 
   <!-- head detection node (detects faces in depth image and publishes their positions) -->
-  <node name="head_detector" pkg="cob_people_detection" type="head_detector_node" output="screen">
+  <node name="head_detector" pkg="cob_people_detection" type="head_detector_node" output="screen" launch-prefix="nice -n 20">
     <rosparam command="load" file="$(find cob_people_detection)/ros/launch/head_detector_params.yaml"/>
     <param name="data_directory" type="string" value="$(find cob_people_detection)/common/files/"/>
     <remap from="~pointcloud_rgb" to="sensor_message_gateway/pointcloud_rgb_out"/>

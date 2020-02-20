@@ -5,7 +5,7 @@
   <!-- <node pkg="cob_people_detection" ns="cob_people_detection/people_segmentation" type="openni_tracker" name="openniTrackerNode" output="screen"/> -->
 
   <!-- detection tracker node (tracks faces in color and depth image and publishes their positions) -->
-  <node name="detection_tracker" pkg="cob_people_detection" type="detection_tracker_node" output="screen">
+  <node name="detection_tracker" pkg="cob_people_detection" type="detection_tracker_node" output="screen" launch-prefix="nice -n 20">
     <rosparam command="load" file="$(find cob_people_detection)/ros/launch/detection_tracker_params.yaml"/>
     <param name="data_directory" type="string" value="$(find cob_people_detection)/common/files/"/>
     <remap from="~face_position_array_in" to="face_recognizer/face_recognitions"/>

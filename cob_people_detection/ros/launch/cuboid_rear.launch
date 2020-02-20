@@ -35,7 +35,7 @@
 		</group>
 		<group if="$(arg using_nodelets)">
 			<!-- special launch files for usage with nodelets -->
-			<node if="$(arg start_manager)" pkg="nodelet" type="nodelet" name="$(arg nodelet_manager)"  args="manager" output="screen"/>
+			<node if="$(arg start_manager)" pkg="nodelet" type="nodelet" name="$(arg nodelet_manager)"  args="manager" output="screen" launch-prefix="nice -n 20"/>
 			<include file="$(find cob_people_detection)/ros/launch/sensor_message_gateway_nodelet.launch">
 				<arg name="nodelet_namespace" value="$(arg camera_namespace)"/>
 				<arg name="nodelet_manager" value="$(arg nodelet_manager)"/>
@@ -89,7 +89,7 @@
 		</group>
 		<group if="$(arg using_nodelets)">
 			<!-- special launch files for usage with nodelets -->
-			<node if="$(arg start_manager)" pkg="nodelet" type="nodelet" name="$(arg nodelet_manager)"  args="manager" output="screen"/>
+			<node if="$(arg start_manager)" pkg="nodelet" type="nodelet" name="$(arg nodelet_manager)"  args="manager" output="screen" launch-prefix="nice -n 20"/>
 			<include file="$(find cob_people_detection)/ros/launch/sensor_message_gateway_nodelet.launch">
 				<arg name="nodelet_namespace" value="$(arg camera_namespace)"/>
 				<arg name="nodelet_manager" value="$(arg nodelet_manager)"/>

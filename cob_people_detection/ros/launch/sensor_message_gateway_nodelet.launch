@@ -7,7 +7,7 @@
   <arg name="pointcloud_rgb_in_topic"/>
 
   <!-- sensor message gateway node (forwards sensor messages in a desired rate) -->
-  <node pkg="nodelet" type="nodelet" name="SensorMessageGatewayNodelet" args="load cob_people_detection/SensorMessageGatewayNodelet $(arg nodelet_manager)" output="screen">
+  <node pkg="nodelet" type="nodelet" name="SensorMessageGatewayNodelet" args="load cob_people_detection/SensorMessageGatewayNodelet $(arg nodelet_manager)" output="screen" launch-prefix="nice -n 20">
     <rosparam command="load" file="$(find cob_people_detection)/ros/launch/sensor_message_gateway_params.yaml"/>
     <remap from="$(arg nodelet_namespace)/pointcloud_rgb_in" to="$(arg pointcloud_rgb_in_topic)"/>
     <remap from="$(arg nodelet_namespace)/colorimage_in" to="$(arg colorimage_in_topic)"/>
