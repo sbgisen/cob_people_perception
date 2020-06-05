@@ -481,7 +481,7 @@ bool FaceRecognizerNode::determine3DFaceCoordinates(cv::Mat& depth_image, int ce
 					continue;
 
 				p = depth_image.at<cv::Point3f>(center2Dy + v, center2Dx + u);
-				if (!isnan(p.x) && !isnan(p.y) && p.z != 0.f)
+				if (!std::isnan(p.x) && !std::isnan(p.y) && p.z != 0.f)
 				{
 					valid_coordinates = true;
 					center3D.x = p.x;

@@ -1374,7 +1374,7 @@ bool FaceNormalizer::projectPointCloud(cv::Mat& img, cv::Mat& depth, cv::Mat& im
        ty=(int)round(txty[1]);
 
 
-       if (ty>1 && tx>1 && ty<sensor_size.height-1 && tx<sensor_size.width-1 && !isnan(ty) && !isnan(tx) )
+       if (ty>1 && tx>1 && ty<sensor_size.height-1 && tx<sensor_size.width-1 && !std::isnan(ty) && !std::isnan(tx) )
        {
             img_cum.at<cv::Vec3b>(ty,tx)+=(*pc_rgb_ptr);
             img_cum.at<cv::Vec3f>(ty+1,tx)+=(*pc_rgb_ptr);
@@ -1416,7 +1416,7 @@ bool FaceNormalizer::projectPointCloud(cv::Mat& img, cv::Mat& depth, cv::Mat& im
        ty=(int)round(txty[1]);
 
 
-       if (ty>1 && tx>1 && ty<sensor_size.height-1 && tx<sensor_size.width-1 && !isnan(ty) && !isnan(tx) )
+       if (ty>1 && tx>1 && ty<sensor_size.height-1 && tx<sensor_size.width-1 && !std::isnan(ty) && !std::isnan(tx) )
        {
             //if((depth_map.at<cv::Vec3f>(ty,tx)[2]==0) || (depth_map.at<cv::Vec3f>(ty,tx)[2]>(*pc_ptr)[2]))
             //{

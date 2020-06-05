@@ -6,7 +6,8 @@
 #include <fstream>
 #include <ostream>
 #include <limits>
-#include <math.h>
+//#include <math.h>
+#include <cmath>
 
 namespace SubspaceAnalysis
 {

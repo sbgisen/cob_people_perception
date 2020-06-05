@@ -593,7 +593,7 @@ unsigned long CobFaceDetectionNodelet::detectFaces(cv::Mat& xyz_image, cv::Mat& 
 			for (int u = uStart; u < uEnd; u++)
 			{
 				float depthval = *zPtr;
-				if (!isnan(depthval))
+				if (!std::isnan(depthval))
 					*tmatPtr = depthval;
 				else
 					*tmatPtr = 1e20;
@@ -608,7 +608,7 @@ unsigned long CobFaceDetectionNodelet::detectFaces(cv::Mat& xyz_image, cv::Mat& 
 		//		  for (int u=uStart; u<uEnd; u++, vector_position++)
 		//		  {
 		//			float depthval = xyz_image.at<cv::Vec3f>(v,u).z;
-		//			if (!isnan(depthval)) tmat.at<float>(0,vector_position) = depthval;
+		//			if (!std::isnan(depthval)) tmat.at<float>(0,vector_position) = depthval;
 		//			else tmat.at<float>(0,vector_position) = 1e20;
 		//		  }
 
@@ -635,7 +635,7 @@ unsigned long CobFaceDetectionNodelet::detectFaces(cv::Mat& xyz_image, cv::Mat& 
 			b = xyz_image.at<cv::Vec3f>((int)(face.y + face.height * 0.75), (int)(face.x + 0.5 * face.width));
 			if (display_)
 				std::cout << "a: " << a.val[0] << " " << a.val[1] << " " << a.val[2] << "   b: " << " " << b.val[0] << " " << b.val[1] << " " << b.val[2] << "\n";
-			if (isnan(a.val[0]) || isnan(b.val[0]))
+			if (std::isnan(a.val[0]) || std::isnan(b.val[0]))
 				radiusY = 0.0;
 			else
 				radiusY = cv::norm(b - a);
@@ -646,7 +646,7 @@ unsigned long CobFaceDetectionNodelet::detectFaces(cv::Mat& xyz_image, cv::Mat& 
 			b = xyz_image.at<cv::Vec3f>((int)(face.y + face.height * 0.5), (int)(face.x + face.width * 0.75));
 			if (display_)
 				std::cout << "a: " << a.val[0] << " " << a.val[1] << " " << a.val[2] << "   b: " << " " << b.val[0] << " " << b.val[1] << " " << b.val[2] << "\n";
-			if (isnan(a.val[0]) || isnan(b.val[0]))
+			if (std::isnan(a.val[0]) || std::isnan(b.val[0]))
 				radiusX = 0.0;
 			else
 			{
@@ -1180,7 +1180,7 @@ unsigned long CobFaceDetectionNodelet::convertPclMessageToMat(const sensor_msgs:
 			pcl::PointXYZ point_xyz = depth_cloud(u, v);
 			data_ptr[0] = point_xyz.x;
 			data_ptr[1] = point_xyz.y;
-			data_ptr[2] = (isnan(point_xyz.z)) ? 0.f : point_xyz.z;
+			data_ptr[2] = (std::isnan(point_xyz.z)) ? 0.f : point_xyz.z;
 			//if (u%100 == 0) std::cout << "u" << u << " v" << v << " z" << data_ptr[2] << "\n";
 		}
 	}
@@ -1316,7 +1316,7 @@ void CobFaceDetectionNodelet::recognizeCallback(const sensor_msgs::PointCloud2::
 						point->y = p.y;
 						point->z = p.z;
 
-						if (!isnan(point->x) && !isnan(point->y) && point->z != 0.f)
+						if (!std::isnan(point->x) && !std::isnan(point->y) && point->z != 0.f)
 							validCoordinates = true;
 					}
 				}
@@ -1371,7 +1371,7 @@ void CobFaceDetectionNodelet::recognizeCallback(const sensor_msgs::PointCloud2::
 					point->y = p.y;
 					point->z = p.z;
 
-					if (!isnan(point->x) && !isnan(point->y) && point->z != 0.f)
+					if (!std::isnan(point->x) && !std::isnan(point->y) && point->z != 0.f)
 						validCoordinates = true;
 				}
 			}

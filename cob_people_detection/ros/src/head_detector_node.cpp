@@ -199,7 +199,7 @@ unsigned long HeadDetectorNode::convertPclMessageToMat(const sensor_msgs::PointC
 			pcl::PointXYZRGB point_xyz = depth_cloud(u, v);
 			depth_data_ptr[0] = point_xyz.x;
 			depth_data_ptr[1] = point_xyz.y;
-			depth_data_ptr[2] = (isnan(point_xyz.z)) ? 0.f : point_xyz.z;
+			depth_data_ptr[2] = (std::isnan(point_xyz.z)) ? 0.f : point_xyz.z;
 			color_data_ptr[0] = point_xyz.r;
 			color_data_ptr[1] = point_xyz.g;
 			color_data_ptr[2] = point_xyz.b;

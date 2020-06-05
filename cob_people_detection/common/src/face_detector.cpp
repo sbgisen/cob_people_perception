@@ -174,7 +174,7 @@ unsigned long FaceDetector::detectColorFaces(std::vector<cv::Mat>& heads_color_i
 					for (int u=uStart; u<uEnd; u++)
 					{
 						float depthval = *zPtr;
-						if (!isnan(depthval)) *tmatPtr = depthval;
+						if (!std::isnan(depthval)) *tmatPtr = depthval;
 						else *tmatPtr = -1.0;
 						tmatPtr++;
 						zPtr += 3;
@@ -200,7 +200,7 @@ unsigned long FaceDetector::detectColorFaces(std::vector<cv::Mat>& heads_color_i
 					a = heads_depth_images[head_index].at<cv::Vec3f>((int)(face.y+face.height*0.25), (int)(face.x+0.5*face.width));
 					b = heads_depth_images[head_index].at<cv::Vec3f>((int)(face.y+face.height*0.75), (int)(face.x+0.5*face.width));
 					if (m_debug) std::cout << "a: " << a.val[0] << " " << a.val[1] << " " << a.val[2] << "   b: " << " " << b.val[0] << " " << b.val[1] << " " << b.val[2] << "\n";
-					if (isnan(a.val[0]) || isnan(b.val[0])) radiusY = 0.0;
+					if (std::isnan(a.val[0]) || std::isnan(b.val[0])) radiusY = 0.0;
 					else radiusY = cv::norm(b-a);
 					radius3d = radiusY;
 
@@ -208,7 +208,7 @@ unsigned long FaceDetector::detectColorFaces(std::vector<cv::Mat>& heads_color_i
 					a = heads_depth_images[head_index].at<cv::Vec3f>((int)(face.y+face.height*0.5), (int)(face.x+face.width*0.25));
 					b = heads_depth_images[head_index].at<cv::Vec3f>((int)(face.y+face.height*0.5), (int)(face.x+face.width*0.75));
 					if (m_debug) std::cout << "a: " << a.val[0] << " " << a.val[1] << " " << a.val[2] << "   b: " << " " << b.val[0] << " " << b.val[1] << " " << b.val[2] << "\n";
-					if (isnan(a.val[0]) || isnan(b.val[0])) radiusX = 0.0;
+					if (std::isnan(a.val[0]) || std::isnan(b.val[0])) radiusX = 0.0;
 					else
 					{
 						radiusX = cv::norm(b-a);

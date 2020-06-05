@@ -146,7 +146,7 @@ void PeopleDetectionDisplayNode::inputCallback(const cob_perception_msgs::Detect
 	//		for (unsigned int u=0; u<point_cloud_src.width; u++)
 	//		{
 	//			pcl::PointXYZRGB point = point_cloud_src(u,v);
-	//			if (isnan_(point.z) == false)
+	//			if (std::isnan_(point.z) == false)
 	//				color_image.at<cv::Point3_<unsigned char> >(v,u) = cv::Point3_<unsigned char>(point.b, point.g, point.r);
 	//		}
 	//	}

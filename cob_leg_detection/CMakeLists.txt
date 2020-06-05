@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(cob_leg_detection)
+add_compile_options(-std=c++11)
 
 set(catkin_RUN_PACKAGES
 	cob_people_tracking_filter
@@ -29,7 +30,7 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(OpenCV REQUIRED)
 find_package(orocos_kdl REQUIRED)
 find_package(PkgConfig)
-pkg_check_modules(BFL REQUIRED bfl)
+pkg_check_modules(BFL REQUIRED orocos-bfl)
 
 ## dynamic reconfigure config
 generate_dynamic_reconfigure_options(
