@@ -15,6 +15,7 @@
 		<arg name="nodelet_manager" default="/$(arg camera_namespace)/$(arg camera_namespace)_nodelet_manager"/>    <!-- name of the nodelet manager started by the openni driver, default for the openni driver is camera_nodelet_manager, 
 		for Care-O-bot default is cam3d_nodelet_manager -->
 		<arg name="start_manager" default="false"/>     <!-- if you do not like to use the nodelet manager provided by the openni driver, specify your own by setting this parameter to true and providing the name of your manager with argument nodelet_manager-->
+		<param name="face_recognizer/data_storage_directory" value="cob_face_recognizer/$(arg camera_namespace)" />
 
 		<!-- launch file args toggling whether to start parts of the pipeline or not -->
 		<arg name="launch_head_detector" default="true"/>
@@ -70,6 +71,7 @@
 		<arg name="nodelet_manager" default="/$(arg camera_namespace)/$(arg camera_namespace)_nodelet_manager"/>    <!-- name of the nodelet manager started by the openni driver, default for the openni driver is camera_nodelet_manager, 
 		for Care-O-bot default is cam3d_nodelet_manager -->
 		<arg name="start_manager" default="false"/>     <!-- if you do not like to use the nodelet manager provided by the openni driver, specify your own by setting this parameter to true and providing the name of your manager with argument nodelet_manager-->
+		<param name="face_recognizer/data_storage_directory" value="cob_face_recognizer/$(arg camera_namespace)" />
 
 		<!-- launch file args toggling whether to start parts of the pipeline or not -->
 		<arg name="launch_head_detector" default="true"/>
