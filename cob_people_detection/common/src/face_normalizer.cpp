@@ -1168,10 +1168,10 @@ bool FaceNormalizer::detect_feature(cv::Mat& img,cv::Point2f& coords,FACE::FEATU
     case FACE::NOSE:
   {
     offset =cv::Vec2f(0,0);
-    IplImage ipl_img=(IplImage)img;
-     seq=cvHaarDetectObjects(&ipl_img,nose_cascade_,nose_storage_,1.1,1,0,cv::Size(20*scale,20*scale));
-     //seq=cvHaarDetectObjects(&ipl_img,nose_cascade_,nose_storage_,1.3,2,CV_HAAR_DO_CANNY_PRUNING,cv::Size(15*scale,15*scale));
-     break;
+    IplImage ipl_img = cvIplImage(img);
+    seq = cvHaarDetectObjects(&ipl_img, nose_cascade_, nose_storage_, 1.1, 1, 0, cvSize(20 * scale, 20 * scale));
+    // seq=cvHaarDetectObjects(&ipl_img,nose_cascade_,nose_storage_,1.3,2,CV_HAAR_DO_CANNY_PRUNING,cv::Size(15*scale,15*scale));
+    break;
   }
 
     case FACE::LEFTEYE:
@@ -1180,7 +1180,7 @@ bool FaceNormalizer::detect_feature(cv::Mat& img,cv::Point2f& coords,FACE::FEATU
     offset[1]=0;
     cv::Mat sub_img=img.clone();
     sub_img=sub_img(cvRect(0,0,f_det_img_.nose.x,f_det_img_.nose.y));
-    IplImage ipl_img=(IplImage)sub_img;
+    IplImage ipl_img=cvIplImage(sub_img);
      seq=cvHaarDetectObjects(&ipl_img,eye_l_cascade_,eye_l_storage_,1.1,1,0,cvSize(20*scale,10*scale));
      break;
   }
@@ -1191,9 +1191,9 @@ bool FaceNormalizer::detect_feature(cv::Mat& img,cv::Point2f& coords,FACE::FEATU
     offset[1]=0;
     cv::Mat sub_img=img.clone();
     sub_img=sub_img(cvRect(f_det_img_.nose.x,0,img.cols-f_det_img_.nose.x-1,f_det_img_.nose.y));
-    IplImage ipl_img=(IplImage)sub_img;
-     seq=cvHaarDetectObjects(&ipl_img,eye_r_cascade_,eye_r_storage_,1.1,1,0,cvSize(20*scale,10*scale));
-     break;
+    IplImage ipl_img = cvIplImage(sub_img);
+    seq = cvHaarDetectObjects(&ipl_img, eye_r_cascade_, eye_r_storage_, 1.1, 1, 0, cvSize(20 * scale, 10 * scale));
+    break;
   }
 
     case FACE::MOUTH:
@@ -1239,7 +1239,7 @@ void FaceNormalizer::dump_features(cv::Mat& img)
 
   cv::Mat img2;
   img.copyTo(img2);
-  IplImage ipl_img=(IplImage)img2;
+  IplImage ipl_img = cvIplImage(img2);
    cv::circle(img2,cv::Point(f_det_img_.nose.x, f_det_img_.nose.y),5,CV_RGB(255,0,0));
    //cv::circle(img2,cv::Point(f_det_img_.mouth.x,f_det_img_.mouth.y),5,CV_RGB(0,255,0));
    cv::circle(img2,cv::Point(f_det_img_.lefteye.x,f_det_img_.lefteye.y),5,CV_RGB(255,255,0));

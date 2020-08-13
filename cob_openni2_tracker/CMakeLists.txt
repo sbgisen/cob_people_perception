@@ -38,7 +38,7 @@ find_package(PCL 1.3 REQUIRED COMPONENTS common io)
 include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
-					
+
 ########################################################
 # Find OpenNI2 (installed)
 ########################################################
@@ -49,7 +49,7 @@ find_path(OpenNI2_INCLUDE_DIRS
 find_library(OpenNI2_LIBRARIES
 	NAMES OpenNI2 DummyDevice OniFile PS1090
 	HINTS /usr/lib/ /usr/lib/OpenNI2/Drivers
-	PATH_SUFFIXES lib) 
+	PATH_SUFFIXES lib)
 message(STATUS ${OpenNI2_LIBRARIES})
 
 #########################################################

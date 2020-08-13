@@ -27,7 +27,7 @@ find_package(catkin REQUIRED COMPONENTS
 	${catkin_BUILD_PACKAGES}
 )
 
-find_package(OpenCV REQUIRED)
+find_package(OpenCV 3 REQUIRED)
 find_package(orocos_kdl REQUIRED)
 find_package(PkgConfig)
 pkg_check_modules(BFL REQUIRED orocos-bfl)
@@ -54,7 +54,7 @@ link_directories(${BFL_LIBRARY_DIRS})
 ## Declare a cpp executable
 add_executable(leg_detection
 	src/laser_processor.cpp
-	src/leg_detector.cpp 
+	src/leg_detector.cpp
 	src/calc_leg_features.cpp
 )
 

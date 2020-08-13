@@ -124,8 +124,8 @@ unsigned long FaceDetector::detectColorFaces(std::vector<cv::Mat>& heads_color_i
 	for(unsigned int head=0; head<heads_color_images.size(); head++)
 	{
 		// detect faces in color image in proposed region
-		IplImage imgPtr = (IplImage)heads_color_images[head];
-		CvSeq* faces = cvHaarDetectObjects(&imgPtr,	m_face_cascade,	m_storage, m_faces_increase_search_scale, m_faces_drop_groups, CV_HAAR_DO_CANNY_PRUNING, cvSize(m_faces_min_search_scale_x, m_faces_min_search_scale_y));
+        IplImage imgPtr = cvIplImage(heads_color_images[head]);
+        CvSeq* faces = cvHaarDetectObjects(&imgPtr,	m_face_cascade,	m_storage, m_faces_increase_search_scale, m_faces_drop_groups, CV_HAAR_DO_CANNY_PRUNING, cvSize(m_faces_min_search_scale_x, m_faces_min_search_scale_y));
 
 		cv::Size parentSize;
 		cv::Point roiOffset;
